@@ -9,16 +9,16 @@ namespace Minesweeper
     {
         private int flagged;
         private int mineCount;
-        private int gameState;
+        private GameState gameState;
 
         public Game(int mineCount)
         {
             this.mineCount = mineCount;
             this.flagged = 0;
-            this.gameState = 0;
+            this.gameState = GameState.PLAYING;
         }
 
-        public int getGameState()
+        public GameState getGameState()
         {
             return gameState;
         }
@@ -49,7 +49,7 @@ namespace Minesweeper
                 else if (cells[i, j] == -1)
                 {
                     revealMines(i, j, cells);
-                    this.gameState = -1;
+                    this.gameState = GameState.LOST;
                 }
             }
             else if (b == MouseButtons.Right)
@@ -81,7 +81,7 @@ namespace Minesweeper
             }
 
             if (checkWin(cells))
-                this.gameState = 1;
+                this.gameState = GameState.WON;
 
         }
 

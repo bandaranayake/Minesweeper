@@ -71,13 +71,13 @@ namespace Minesweeper
                 int mines = MINE_COUNT[level - 1] - game.getFlags();
                 lblMines.Text = (mines < 0 ? 0 : mines).ToString().PadLeft(4, '0');
 
-                if (game.getGameState() == -1)
+                if (game.getGameState() == GameState.LOST)
                 {
                     timer.Stop();
                     btnPlay.BackgroundImage = Properties.Resources.sad;
                     MessageBox.Show("You Lost !", "Minesweeper");
                 }
-                else if (game.getGameState() == 1)
+                else if (game.getGameState() == GameState.WON)
                 {
                     timer.Stop();
                     MessageBox.Show("You Win !", "Minesweeper");
